@@ -20,15 +20,14 @@
         <div class="sidebar">
             <div class="sidebar-wrapper" th:fragment="sidebar">
                 <div class="logo">
-                    <a href="#" class="simple-text logo-normal">
-                        @* <img th:src="@{/img/Logo.png}" alt="Catcher" style="opacity: .8;max-width: 30%;"> *@
+                    <a class="simple-text logo-normal" asp-controller="Report" asp-action="errorProportion">
                         <img src="~/img/Logo.png" alt="Catcher" style="opacity: .8;max-width: 30%;">
                         <span>Catcher</span>
                     </a>
                 </div>
                 <ul class="nav">
                     <li>
-                        <a href="#">
+                        <a asp-controller="Report" asp-action="errorProportion">
                             <i class="tim-icons icon-sound-wave"></i>
                             <p>錯誤比例</p>
                         </a>
