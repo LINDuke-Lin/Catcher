@@ -3,21 +3,31 @@
     ViewData["Title"] = "Login";
 }
 
-
 @section scripts{
+    <link rel="stylesheet" href="~/css/sweetalert/sweetalert-dark.css">
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <script>
+        /**
+         * ­«²Õapi data
+         */
         function GetApiData() {
             let data = {
-                user: document.getElementById("username_login").value,
-                mema: document.getElementById("pwd_login").value
+                User: document.getElementById("username_login").value,
+                Mema: document.getElementById("pwd_login").value,
+                RememberMe: false
             };
             return data;
         }
 
-        function ToLogin() {
+        /**
+         * µn¤J
+         */
+        let ToLogin = _.throttle(function() {
             let data = GetApiData();
-            console.log(data);
-        }
+            userLogin(data).then((res) => {
+                console.log(res);
+            });
+        }, 5000);
     </script>
 
 }
@@ -60,7 +70,6 @@
                                         </div>
 
                                     </div>
-
                                 </div>
                                 <div class="card-footer">
                                     <button type="button" name="login" class="btn btn-fill btn-primary float-right mb-3" onclick="ToLogin()">Login</button>
