@@ -1,6 +1,6 @@
-﻿using Catcher.Web.Models;
+﻿using Catcher.Service.AccountService;
+using Catcher.Web.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catcher.Web.Controllers.WebApi
@@ -9,14 +9,40 @@ namespace Catcher.Web.Controllers.WebApi
     [ApiController]
     public class AccountApiController : ControllerBase
     {
-      
+        private readonly ILoginService loginService;
+
+        public AccountApiController(ILoginService loginService)
+        {
+            this.loginService = loginService;
+        }
+
         [HttpPost("Login")]
         [AllowAnonymous]
-        public void Login([FromBody] LoginViewModel User)
+        public HttpResModel<string> Login([FromBody] LoginViewModel model, [FromQuery] string redirectUri)
         {
-           // logger.LogDebug($"{User.Mema}, {User.User}");
+            HttpResModel<string> req = new() { Code = ApiCode.Success, Message = "Success" };
+            if (loginService.IsValid(model.User, model.Mema))
+            {
+                req.Code = ApiCode.Fail;
+                req.Message = "Fail";
+                req.Data = "帳號或密碼有誤";
+                return req;
+            }
 
-            string a = "";
+            if (ModelState.IsValid)
+            {
+                HttpCookie cookie;
+                var returnUrl = usersService.ProcessLogin(model.Email, model.RememberMe, out cookie);
+                Response.Cookies.Add(cookie);
+                Log4netHelper.logger(LogEnums.Info, log, $"{model.Email} 登入成功");
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return req;
+            }
+
+            return req;
         }
     }
 }
