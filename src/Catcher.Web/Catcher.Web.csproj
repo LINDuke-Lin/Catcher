@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Catcher.Model\Catcher.Model.csproj" />
     <ProjectReference Include="..\Catcher.Service\Catcher.Service.csproj" />
   </ItemGroup>
 

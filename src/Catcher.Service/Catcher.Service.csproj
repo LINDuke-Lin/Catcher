@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Catcher.Model\Catcher.Model.csproj" />
+  </ItemGroup>
+
 </Project>
