@@ -28,20 +28,6 @@ namespace Catcher.Web.Controllers.WebApi
                 req.Data = "帳號或密碼有誤";
                 return req;
             }
-
-            if (ModelState.IsValid)
-            {
-                HttpCookie cookie;
-                var returnUrl = usersService.ProcessLogin(model.Email, model.RememberMe, out cookie);
-                Response.Cookies.Add(cookie);
-                Log4netHelper.logger(LogEnums.Info, log, $"{model.Email} 登入成功");
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return req;
-            }
-
             return req;
         }
     }

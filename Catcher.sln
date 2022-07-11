@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catcher.Web", "src\Catcher.Web\Catcher.Web.csproj", "{04F75182-4B2A-4833-9EC5-08EDB39D1CBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catcher.Service", "src\Catcher.Service\Catcher.Service.csproj", "{0D96FE4E-FC0A-46C0-89A0-00D7CD4FAD49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catcher.Service", "src\Catcher.Service\Catcher.Service.csproj", "{0D96FE4E-FC0A-46C0-89A0-00D7CD4FAD49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catcher.Model", "src\Catcher.Model\Catcher.Model.csproj", "{5B96AA82-6736-4D62-B614-10F8D3F7C3F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0D96FE4E-FC0A-46C0-89A0-00D7CD4FAD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D96FE4E-FC0A-46C0-89A0-00D7CD4FAD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D96FE4E-FC0A-46C0-89A0-00D7CD4FAD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B96AA82-6736-4D62-B614-10F8D3F7C3F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B96AA82-6736-4D62-B614-10F8D3F7C3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B96AA82-6736-4D62-B614-10F8D3F7C3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B96AA82-6736-4D62-B614-10F8D3F7C3F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
