@@ -1,5 +1,4 @@
-﻿using Catcher.Model.Repositorys;
-using Catcher.Service.Helpers;
+﻿using Catcher.Service.Helpers;
 
 namespace Catcher.Service.AccountService
 {
@@ -10,13 +9,6 @@ namespace Catcher.Service.AccountService
 
     public class LoginService: ILoginService
     {
-        private readonly ITestEFRepository testEFRepo;
-
-        public LoginService(ITestEFRepository testEFRepo)
-        {
-            this.testEFRepo = testEFRepo;
-        }
-
         private static List<AspNetUsers> userList = new List<AspNetUsers>()
         {
             new AspNetUsers()
@@ -28,9 +20,6 @@ namespace Catcher.Service.AccountService
 
         public bool IsValid(string user, string password)
         {
-            testEFRepo.Create();
-            var myUser = testEFRepo.GetUser().ToList();
-
             List<AspNetUsers> item = userList.Where(x => x.User.Equals(user)).ToList();
             if (item.Count <= 0) { return false; }
             return HashedHelper.VerifyHashedPassword(item[0].PasswordHash, password);

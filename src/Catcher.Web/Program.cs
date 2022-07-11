@@ -1,5 +1,4 @@
 using Catcher.Model.Entities;
-using Catcher.Model.Repositorys;
 using Catcher.Service.AccountService;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<CatcherDB>();
-builder.Services.AddTransient<ITestEFRepository, TestEFRepository>();
 builder.Services.AddTransient<ILoginService, LoginService>();
 
 builder.Services.AddDbContext<CatcherDB>(options =>
