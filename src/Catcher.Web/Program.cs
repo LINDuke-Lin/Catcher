@@ -1,17 +1,14 @@
-using Catcher.Model.Entities;
 using Catcher.Service.AccountService;
-using Microsoft.EntityFrameworkCore;
+using Catcher.Web.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<CatcherDB>();
-builder.Services.AddTransient<ILoginService, LoginService>();
+DataBase.Connection(builder);
+DependencyInjection.Container(builder);
 
-builder.Services.AddDbContext<CatcherDB>(options =>
-                                options.UseMySql(builder.Configuration.GetConnectionString("CatcherContext"), ServerVersion.Parse("8.0.29-mysql")));
 
 var app = builder.Build();
 
