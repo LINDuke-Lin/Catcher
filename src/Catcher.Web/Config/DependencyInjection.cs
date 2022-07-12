@@ -1,6 +1,4 @@
-﻿using Catcher.Service.AccountService;
-
-namespace Catcher.Web.Config
+﻿namespace Catcher.Web.Config
 {
     public static class DependencyInjection
     {

@@ -1,8 +1,4 @@
-﻿using Catcher.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-namespace Catcher.Web.Controllers
+﻿namespace Catcher.Web.Controllers
 {
     public class HomeController : Controller
     {

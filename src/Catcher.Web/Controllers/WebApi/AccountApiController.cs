@@ -1,9 +1,4 @@
-﻿using Catcher.Service.AccountService;
-using Catcher.Web.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Catcher.Web.Controllers.WebApi
+﻿namespace Catcher.Web.Controllers.WebApi
 {
     [Route("api/[controller]")]
     [ApiController]
