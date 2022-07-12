@@ -9,7 +9,7 @@ namespace Catcher.Service.AccountService
 
     public class LoginService: ILoginService
     {
-        private static List<AspNetUsers> userList = new List<AspNetUsers>()
+        private static readonly List<AspNetUsers> userList = new()
         {
             new AspNetUsers()
             {

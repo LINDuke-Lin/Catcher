@@ -1,6 +1,3 @@
-
-using Microsoft.AspNetCore.Mvc;
-
 namespace Catcher.Web.Controllers
 {
     public class ReportController : Controller

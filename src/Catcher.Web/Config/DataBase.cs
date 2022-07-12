@@ -1,5 +1,4 @@
-﻿using Catcher.Model.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿
 
 namespace Catcher.Web.Config
 {

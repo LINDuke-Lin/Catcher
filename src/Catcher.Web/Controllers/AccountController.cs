@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Catcher.Web.Controllers
 {
     public class AccountController : Controller
@@ -15,7 +13,5 @@ namespace Catcher.Web.Controllers
         {
             return View();
         }
-
-
     }
 }

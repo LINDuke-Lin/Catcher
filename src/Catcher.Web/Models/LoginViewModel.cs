@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Catcher.Web.Models
+﻿namespace Catcher.Web.Models
 {
     public class LoginViewModel
     {
