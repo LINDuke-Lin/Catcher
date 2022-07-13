@@ -365,3 +365,5 @@ FodyWeavers.xsd
 .idea
 .vs
 .vscode
+/src/Catcher.Web/Properties/ServiceDependencies/Catcher - Zip Deploy/profile.arm.json
+
