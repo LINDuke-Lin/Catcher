@@ -6,21 +6,20 @@
 @section scripts{
     <link rel="stylesheet" href="~/css/sweetalert/sweetalert-dark.css">
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
-    <script>
+    <script>  
         /**
-         * ­«²Õapi data
+         * Set api data
          */
-        function GetApiData() {
-            let data = {
+        function GetApiData() {            
+            return {
                 User: document.getElementById("username_login").value,
                 Mema: document.getElementById("pwd_login").value,
                 RememberMe: false
             };
-            return data;
         }
 
         /**
-         * µn¤J
+         * login
          */
         let ToLogin = _.throttle(function() {
             let data = GetApiData();
@@ -38,7 +37,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                         <div class="card">
-                            <form role="form">
+                            <form role="form" onsubmit = "return false">
 
                                 <div class="card-header">
                                     <h3 class="title">Login</h3>
@@ -72,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" name="login" class="btn btn-fill btn-primary float-right mb-3" onclick="ToLogin()">Login</button>
+                                    <button type="submit" name="login" class="btn btn-fill btn-primary float-right mb-3" onclick="ToLogin()">Login</button>
                                 </div>
 
                             </form>
