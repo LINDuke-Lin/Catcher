@@ -10,9 +10,9 @@ namespace Catcher.Web.Config
         /// <param name="builder"></param>
         public static void Connection(WebApplicationBuilder builder)
         {
-            builder.Services.AddTransient<CatcherDB>();
+            builder.Services.AddTransient<CatcherDb>();
 
-            builder.Services.AddDbContext<CatcherDB>(options =>
+            builder.Services.AddDbContext<CatcherDb>(options =>
                                             options.UseMySql(builder.Configuration.GetConnectionString("CatcherContext"), ServerVersion.Parse("8.0.29-mysql")));
         }
     }

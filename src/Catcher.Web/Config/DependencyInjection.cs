@@ -1,4 +1,6 @@
-﻿namespace Catcher.Web.Config
+﻿
+
+namespace Catcher.Web.Config
 {
     public static class DependencyInjection
     {
@@ -9,6 +11,8 @@
         public static void Container(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ILoginService, LoginService>();
+            
+            builder.Services.AddTransient<IUsersRepository, UsersRepository>();
         }
     }
 }

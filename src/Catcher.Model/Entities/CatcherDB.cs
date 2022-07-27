@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Catcher.Model.Entities
 {
-    public partial class CatcherDB : DbContext
+    public partial class CatcherDb : DbContext
     {
-        public CatcherDB()
+        public CatcherDb()
         {
         }
 
-        public CatcherDB(DbContextOptions<CatcherDB> options)
+        public CatcherDb(DbContextOptions<CatcherDb> options)
             : base(options)
         {
         }
