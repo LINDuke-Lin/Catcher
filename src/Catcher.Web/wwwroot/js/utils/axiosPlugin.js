@@ -41,6 +41,9 @@ instance.interceptors.response.use(
                 case 400:
                     console.log(error.message);
                     return error.message;
+                case 401:
+
+                    break;
                 case 404:
                     console.log('你要找的頁面不存在');
                     break;

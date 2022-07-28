@@ -1,5 +1,7 @@
 ﻿
 
+using Catcher.Service.Helpers;
+
 namespace Catcher.Web.Config
 {
     public static class DependencyInjection
@@ -13,6 +15,8 @@ namespace Catcher.Web.Config
             builder.Services.AddTransient<ILoginService, LoginService>();
             
             builder.Services.AddTransient<IUsersRepository, UsersRepository>();
+
+            builder.Services.AddSingleton<JwtHelpers>();
         }
     }
 }

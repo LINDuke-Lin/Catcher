@@ -1,5 +1,6 @@
 namespace Catcher.Web.Controllers
 {
+    [Authorize]
     public class ReportController : Controller
     {
         private readonly ILogger<ReportController> logger;
@@ -9,7 +10,7 @@ namespace Catcher.Web.Controllers
             this.logger = logger;
         }
 
-        public IActionResult errorProportion()
+        public IActionResult ErrorProportion()
         {
             return View();
         }
