@@ -37,7 +37,7 @@ app.UseStatusCodePages(async context =>
     var response = context.HttpContext.Response;
     var path = request.Path.Value ?? "";
 
-    if (response.StatusCode == (int)HttpStatusCode.Unauthorized || path.StartsWith("/api", StringComparison.InvariantCultureIgnoreCase))
+    if (response.StatusCode == (int)HttpStatusCode.Unauthorized && !path.StartsWith("/api", StringComparison.InvariantCultureIgnoreCase))
     {
         //var RedirectPath = $"{request.Scheme}://{request.Host}/Account/Login";
         //response.Redirect(RedirectPath);
