@@ -13,3 +13,4 @@ global using global::Microsoft.Extensions.Logging;
 global using global::System.ComponentModel.DataAnnotations;
 global using global::Catcher.Model.Entities;
 global using global::Microsoft.EntityFrameworkCore;
+global using global::Catcher.Model.Repositorys;

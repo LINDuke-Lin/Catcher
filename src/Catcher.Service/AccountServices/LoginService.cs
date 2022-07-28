@@ -1,4 +1,5 @@
-﻿using Catcher.Service.Helpers;
+﻿using Catcher.Model.Repositorys;
+using Catcher.Service.Helpers;
 
 namespace Catcher.Service.AccountService
 {
@@ -7,28 +8,33 @@ namespace Catcher.Service.AccountService
         bool IsValid(string user, string password);
     }
 
-    public class LoginService: ILoginService
+    public class LoginService : ILoginService
     {
-        private static readonly List<AspNetUsers> userList = new()
-        {
-            new AspNetUsers()
-            {
-                User ="Admin",
-                PasswordHash=""
-            }
-        };
+        private readonly IUsersRepository _userRepo;
 
+        public LoginService(IUsersRepository userRepo)
+        {
+            this._userRepo = userRepo;
+        }
+
+        /// <summary>
+        /// check the user and password is valid
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool IsValid(string user, string password)
         {
-            List<AspNetUsers> item = userList.Where(x => x.User.Equals(user)).ToList();
-            if (item.Count <= 0) { return false; }
-            return HashedHelper.VerifyHashedPassword(item[0].PasswordHash, password);
+            try
+            {
+                var item = _userRepo.Load();
+                if (item.Count <= 0) return false;
+                return HashedHelper.VerifyHashedPassword(item[0].Password, password);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
-    }
-
-    public class AspNetUsers
-    {
-        public string User { get; set; }
-        public string PasswordHash { get; set; }
     }
 }

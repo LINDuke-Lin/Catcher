@@ -11,6 +11,7 @@ namespace Catcher.Web.Controllers
 
         public IActionResult Login()
         {
+            _logger.LogInformation("Go To Login ...");
             return View();
         }
     }
