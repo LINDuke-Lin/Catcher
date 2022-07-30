@@ -1,5 +1,6 @@
 ﻿
 
+using Catcher.Model.Caches;
 using Catcher.Service.Helpers;
 
 namespace Catcher.Web.Config
@@ -17,6 +18,8 @@ namespace Catcher.Web.Config
             builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
             builder.Services.AddSingleton<JwtHelpers>();
+
+            builder.Services.AddSingleton<IRedisDao, RedisDao>();
         }
     }
 }

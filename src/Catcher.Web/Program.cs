@@ -16,6 +16,11 @@ builder.Services.AddAuthorization();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddStackExchangeRedisCache(options =>
+//{
+//    options.Configuration = "127.0.0.1:6666,ssl=True,abortConnect=False";
+//});
+
 DataBase.Connection(builder);
 DependencyInjection.Container(builder);
 JwtConfig.Set(builder);
@@ -31,7 +36,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStatusCodePages(async context =>
+app.UseStatusCodePages(context =>
 {
     var request = context.HttpContext.Request;
     var response = context.HttpContext.Response;
@@ -43,6 +48,8 @@ app.UseStatusCodePages(async context =>
         //response.Redirect(RedirectPath);
         response.Redirect("/Account/Login");
     }
+
+    return System.Threading.Tasks.Task.CompletedTask;
 });
 
 app.UseStaticFiles();
