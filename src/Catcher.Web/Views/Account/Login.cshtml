@@ -6,11 +6,11 @@
 @section scripts{
     <link rel="stylesheet" href="~/css/sweetalert/sweetalert-dark.css">
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
-    <script>  
+    <script>
         /**
          * Set api data
          */
-        function GetApiData() {            
+        function GetApiData() {
             return {
                 User: document.getElementById("username_login").value,
                 Mema: document.getElementById("pwd_login").value,
@@ -23,8 +23,19 @@
          */
         let ToLogin = _.throttle(function() {
             let data = GetApiData();
+
+            if (data.User === '' || data.Mema === '')
+                return;
+
             userLogin(data).then((res) => {
                 console.log(res);
+                if (res.data.code === '0000') {
+                    console.log('µn¤J¦¨¥\');
+                }
+                else {
+                    let errorMessage = document.getElementById("errorMessage");
+                    errorMessage.textContent = res.data.data;
+                }
             });
         }, 5000);
     </script>
@@ -37,7 +48,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                         <div class="card">
-                            <form role="form" onsubmit = "return false">
+                            <form role="form" onsubmit="return false">
 
                                 <div class="card-header">
                                     <h3 class="title">Login</h3>
@@ -60,7 +71,6 @@
 
                                     </div>
                                     <div class="row ml-auto mr-auto">
-
                                         <div class="col-md-8 px-md-1">
                                             <div class="form-group">
                                                 <label>Password</label>
@@ -69,7 +79,11 @@
                                         </div>
 
                                     </div>
+                                    <div class="row ml-auto mr-auto">
+                                        <div id="errorMessage" class="text-danger"></div>
+                                    </div>
                                 </div>
+
                                 <div class="card-footer">
                                     <button type="submit" name="login" class="btn btn-fill btn-primary float-right mb-3" onclick="ToLogin()">Login</button>
                                 </div>

@@ -14,7 +14,7 @@ namespace Catcher.Service.AccountService
 
         public LoginService(IUsersRepository userRepo)
         {
-            this._userRepo = userRepo;
+            _userRepo = userRepo;
         }
 
         /// <summary>
