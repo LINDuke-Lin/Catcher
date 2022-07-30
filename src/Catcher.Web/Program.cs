@@ -1,10 +1,6 @@
 using Catcher.Web.Config;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Net;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

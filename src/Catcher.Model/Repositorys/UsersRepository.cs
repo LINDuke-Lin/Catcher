@@ -1,6 +1,5 @@
 using Catcher.Model.Caches;
 using Catcher.Model.Entities;
-using System.Collections.Generic;
 
 namespace Catcher.Model.Repositorys;
 
@@ -28,10 +27,5 @@ public class UsersRepository : IUsersRepository
     /// load all user data from db
     /// </summary>
     /// <returns></returns>
-    public List<MyUser> Load()
-    {
-        List<MyUser> res = new();
-        res = _dbContext.MyUsers.ToList();
-        return res;
-    }
+    public List<MyUser> Load() => _dbContext.MyUsers.ToList();
 }
