@@ -11,6 +11,11 @@ namespace Catcher.Model.Entities
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql("server=127.0.0.1;port=3300;database=catcherschema;user=tester;password=chicken1234", ServerVersion.Parse("8.0.29-mysql"));
+        }
+
         public CatcherDb(DbContextOptions<CatcherDb> options)
             : base(options)
         {
@@ -28,14 +33,53 @@ namespace Catcher.Model.Entities
             {
                 entity.ToTable("my_user");
 
-                entity.Property(e => e.Id).HasMaxLength(50);
+                entity.Property(e => e.Id).HasMaxLength(150);
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .UseCollation("utf8_general_ci")
                     .HasCharSet("utf8mb3");
 
-                entity.Property(e => e.Password).HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(150);
+
+                entity.Property(e => e.Role).HasMaxLength(10);
+            });
+
+            modelBuilder.Entity<ErrorTitle>(entity =>
+            {
+                entity.ToTable("error_title");
+
+                entity.Property(e => e.Id).HasMaxLength(150);
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.TypeCode).HasMaxLength(50);
+
+                entity.Property(e => e.ErrorDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Memo).HasMaxLength(150);
+
+                //entity.HasOne(e => e.ErrorBodys).WithOne(e => e.)
+                //                  .HasConstraintName("FK_Employee_to_Identity");
+            });
+
+            modelBuilder.Entity<ErrorBody>(entity =>
+            {
+                entity.ToTable("error_body");
+
+                entity.Property(e => e.TypeCode).HasMaxLength(50);
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Qty);
+
+                entity.Property(e => e.Description).HasMaxLength(500);
             });
 
             OnModelCreatingPartial(modelBuilder);

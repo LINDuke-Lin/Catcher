@@ -21,9 +21,9 @@ namespace Catcher.Web.Config
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         // 透過這項宣告，就可以從 "sub" 取值並設定給 User.Identity.Name
-                        NameClaimType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+                        NameClaimType = "Name",
                         // 透過這項宣告，就可以從 "roles" 取值，並可讓 [Authorize] 判斷角色
-                        RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
+                        RoleClaimType = "Admin",
 
                         // 一般我們都會驗證 Issuer
                         ValidateIssuer = true,

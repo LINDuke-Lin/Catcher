@@ -23,13 +23,13 @@ namespace Catcher.Model.Caches
 
         private async Task<bool> SetValus(string key, string value)
         {
-            await _distributedCache.SetStringAsync(key, value);
+            await _distributedCache.SetStringAsync(keyHead + key, value);
             return true;
         }
 
         private async Task<string> GetValus(string key)
         {
-            return await _distributedCache.GetStringAsync(key);
+            return await _distributedCache.GetStringAsync(keyHead + key);
         }
 
         /// <summary>
