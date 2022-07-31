@@ -24,16 +24,13 @@ namespace Catcher.Model.Migrations
 
             modelBuilder.Entity("Catcher.Model.Entities.ErrorBody", b =>
                 {
-                    b.Property<string>("TypeCode")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                    b.Property<string>("Id")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<string>("ErrorTitleId")
-                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
@@ -46,9 +43,12 @@ namespace Catcher.Model.Migrations
 
                     MySqlPropertyBuilderExtensions.HasCharSet(b.Property<string>("Type"), "utf8mb3");
 
-                    b.HasKey("TypeCode");
+                    b.Property<string>("TypeCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
-                    b.HasIndex("ErrorTitleId");
+                    b.HasKey("Id");
 
                     b.ToTable("error_body", (string)null);
                 });
@@ -56,61 +56,61 @@ namespace Catcher.Model.Migrations
             modelBuilder.Entity("Catcher.Model.Entities.ErrorTitle", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<DateTime>("ErrorDate")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Memo")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .UseCollation("utf8_general_ci");
+
+                    MySqlPropertyBuilderExtensions.HasCharSet(b.Property<string>("Title"), "utf8mb3");
 
                     b.Property<string>("TypeCode")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ErrorTitle");
+                    b.ToTable("error_title", (string)null);
                 });
 
             modelBuilder.Entity("Catcher.Model.Entities.MyUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .UseCollation("utf8_general_ci");
+
+                    MySqlPropertyBuilderExtensions.HasCharSet(b.Property<string>("Name"), "utf8mb3");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MyUsers");
-                });
-
-            modelBuilder.Entity("Catcher.Model.Entities.ErrorBody", b =>
-                {
-                    b.HasOne("Catcher.Model.Entities.ErrorTitle", "ErrorTitle")
-                        .WithMany("ErrorBodys")
-                        .HasForeignKey("ErrorTitleId");
-
-                    b.Navigation("ErrorTitle");
-                });
-
-            modelBuilder.Entity("Catcher.Model.Entities.ErrorTitle", b =>
-                {
-                    b.Navigation("ErrorBodys");
+                    b.ToTable("my_user", (string)null);
                 });
 #pragma warning restore 612, 618
         }

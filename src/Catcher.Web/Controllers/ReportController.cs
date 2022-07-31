@@ -1,6 +1,5 @@
 namespace Catcher.Web.Controllers
 {
-    [Authorize]
     public class ReportController : Controller
     {
         private readonly ILogger<ReportController> logger;

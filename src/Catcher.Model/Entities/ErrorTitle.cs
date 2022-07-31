@@ -10,8 +10,5 @@ namespace Catcher.Model.Entities
         public string TypeCode { get; set; } = null!;
         public DateTime ErrorDate { get; set; } = DateTime.MinValue!;
         public string? Memo { get; set; }
-
-
-        public virtual ICollection<ErrorBody>? ErrorBodys { get; set; }
     }
 }

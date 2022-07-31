@@ -2,6 +2,7 @@
 
 using Catcher.Model.Caches;
 using Catcher.Service.Helpers;
+using Catcher.Service.Services;
 
 namespace Catcher.Web.Config
 {
@@ -14,8 +15,12 @@ namespace Catcher.Web.Config
         public static void Container(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ILoginService, LoginService>();
-            
+
+            builder.Services.AddTransient<IErrorService, ErrorService>();
+
             builder.Services.AddTransient<IUsersRepository, UsersRepository>();
+
+            builder.Services.AddTransient<IErrorReopsitory, ErrorReopsitory>();
 
             builder.Services.AddSingleton<JwtHelpers>();
 

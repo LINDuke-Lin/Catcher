@@ -22,6 +22,8 @@ namespace Catcher.Model.Entities
         }
 
         public virtual DbSet<MyUser> MyUsers { get; set; } = null!;
+        public virtual DbSet<ErrorTitle> ErrorTitle { get; set; } = null!;
+        public virtual DbSet<ErrorBody> ErrorBody { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,14 +63,13 @@ namespace Catcher.Model.Entities
                 entity.Property(e => e.ErrorDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Memo).HasMaxLength(150);
-
-                //entity.HasOne(e => e.ErrorBodys).WithOne(e => e.)
-                //                  .HasConstraintName("FK_Employee_to_Identity");
             });
 
             modelBuilder.Entity<ErrorBody>(entity =>
             {
                 entity.ToTable("error_body");
+
+                entity.Property(e => e.Id).HasMaxLength(150);
 
                 entity.Property(e => e.TypeCode).HasMaxLength(50);
 
